@@ -2,9 +2,9 @@ package com.example.coincapshortc.model
 
 import com.example.coincapshortc.model.api.CoinCapApi
 import com.example.coincapshortc.model.api.dto.toModel
-//import com.example.coincapshortc.model.db.AppDatabase
-//import com.example.coincapshortc.model.db.toEntity
-//import com.example.coincapshortc.model.db.toModel
+import com.example.coincapshortc.model.db.AppDatabase
+import com.example.coincapshortc.model.db.toEntity
+import com.example.coincapshortc.model.db.toModel
 import com.example.coincapshortc.model.model.Asset
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 
 class AssetsRepository(
-    private val coinCapApi: CoinCapApi
-    //private val database: AppDatabase
+    private val coinCapApi: CoinCapApi,
+    private val database: AppDatabase
 ) {
 
     data class State(
@@ -24,10 +24,10 @@ class AssetsRepository(
     private val _states = MutableStateFlow(State(isInProgress = false))
     val states = _states.asStateFlow()
 
-//    fun loadAsset(id: String): Flow<Asset> =
-//        database.assetDao()
-//            .loadById(id)
-//            .map { it?.toModel() ?: Asset(id, "", 0f, 0f, 0f) }
+    fun loadAsset(id: String): Flow<Asset> =
+        database.assetDao()
+            .loadById(id)
+            .map { it?.toModel() ?: Asset(id, "", 0f, 0f, 0f) }
 
     suspend fun refreshAsset(id: String) {
         _states.value = State(isInProgress = true)
@@ -37,8 +37,8 @@ class AssetsRepository(
 //            println(asset.name)
 //            println(asset.id)
 //            println(asset.change24Hr)
-//            val dbAsset = asset.toEntity()
-//            database.assetDao().insert(dbAsset)
+            val dbAsset = asset.toEntity()
+            database.assetDao().insert(dbAsset)
             _states.value = State(isInProgress = false)
         } catch (ex: Exception) {
             _states.value = State(isInProgress = false, error = ex.message)

@@ -8,6 +8,8 @@ import androidx.lifecycle.get
 import com.example.coincapshortc.model.AssetsRepository
 import com.example.coincapshortc.model.api.CoinCapApi
 import com.example.coincapshortc.ui.assets.AssetDetailsViewModel
+import com.example.coincapshortc.model.db.AppDatabase
+import com.example.coincapshortc.model.db.GameDatabase
 
 //import com.example.coincapshortc.ui.rates.RatesViewModel
 
@@ -27,9 +29,9 @@ object ServiceLocator {
 //        GameDatabase()
 //    }
 
-//    val database: AppDatabase by lazy {
-//        AppDatabase.build(this.applicationContext)
-//    }
+    val database: AppDatabase by lazy {
+        AppDatabase.build(this.applicationContext)
+    }
 
     private val coinCapApi: CoinCapApi by lazy {
         CoinCapApi.build()
@@ -40,7 +42,7 @@ object ServiceLocator {
 //    }
 
     private val assetsRepository: AssetsRepository by lazy {
-        AssetsRepository(coinCapApi)
+        AssetsRepository(coinCapApi, database)
     }
 
     private val viewModelFactory by lazy {

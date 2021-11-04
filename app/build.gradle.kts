@@ -62,4 +62,7 @@ dependencies {
 
     implementation("com.jakewharton.timber:timber:5.0.1")
 
+    implementation("androidx.room:room-runtime:2.4.0-alpha05")
+    annotationProcessor("androidx.room:room-compiler:2.4.0-alpha05")
+
 }

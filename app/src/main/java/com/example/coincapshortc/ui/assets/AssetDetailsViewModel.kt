@@ -32,11 +32,11 @@ class AssetDetailsViewModel(private val repository: AssetsRepository) : ViewMode
 
     init {
         // Option 1 of binding to UI: Collect the flow and throw into a MutableLiveData
-//        viewModelScope.launch {
-//            repository.loadAsset(id)
-//                .collect { asset.value = it }
-//
-//        }
+        viewModelScope.launch {
+            repository.loadAsset(id)
+                .collect { asset.value = it }
+
+        }
 
         // Also trigger an asset refresh, as we start, so we have up-to-date info
         viewModelScope.launch {
@@ -48,6 +48,7 @@ class AssetDetailsViewModel(private val repository: AssetsRepository) : ViewMode
     fun onRefreshButtonClicked() {
         viewModelScope.launch {
             repository.refreshAsset(id)
+
         }
         println("--------------------")
         println(price)
