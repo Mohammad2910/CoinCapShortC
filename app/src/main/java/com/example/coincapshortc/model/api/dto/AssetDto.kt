@@ -1,8 +1,8 @@
-package dk.shortcut.dtudemoapp.model.api.model
+package com.example.coincapshortc.model.api.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import dk.shortcut.dtudemoapp.model.model.Asset
+import com.example.coincapshortc.model.model.Asset
 
 @JsonClass(generateAdapter = true)
 data class AssetDto(

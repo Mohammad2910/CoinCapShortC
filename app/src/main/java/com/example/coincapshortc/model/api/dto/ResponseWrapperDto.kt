@@ -1,4 +1,4 @@
-package dk.shortcut.dtudemoapp.model.api.model
+package com.example.coincapshortc.model.api.dto
 
 import com.squareup.moshi.JsonClass
 

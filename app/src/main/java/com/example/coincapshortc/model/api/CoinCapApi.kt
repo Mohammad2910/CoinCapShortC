@@ -1,7 +1,7 @@
 package com.example.coincapshortc.model.api
 
-import dk.shortcut.dtudemoapp.model.api.model.AssetDto
-import dk.shortcut.dtudemoapp.model.api.model.RateDto
+import com.example.coincapshortc.model.api.dto.AssetDto
+import com.example.coincapshortc.model.api.dto.RateDto
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call

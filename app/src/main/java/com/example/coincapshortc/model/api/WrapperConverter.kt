@@ -1,7 +1,7 @@
 package com.example.coincapshortc.model.api
 
 import com.squareup.moshi.Types
-import dk.shortcut.dtudemoapp.model.api.model.ResponseWrapperDto
+import com.example.coincapshortc.model.api.dto.ResponseWrapperDto
 import okhttp3.ResponseBody
 import retrofit2.Converter
 import retrofit2.Retrofit
